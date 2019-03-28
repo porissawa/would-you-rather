@@ -1,5 +1,5 @@
-const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-const ADD_QUESTION = 'ADD_QUESTION'
+import {_getQuestions} from '../utils/_DATA'
+import {RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_QUESTION} from '../actions/questions'
 
 export default function questions (state = {}, action) {
     switch(action.type) {
