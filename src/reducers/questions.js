@@ -1,7 +1,6 @@
-import {_getQuestions} from '../utils/_DATA'
-import {RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_QUESTION} from '../actions/questions'
+import {RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_QUESTION_ANSWER} from '../actions/questions'
 
-export default function questions (state = {}, action) {
+export function questions (state = {}, action) {
     switch(action.type) {
         case RECEIVE_QUESTIONS:
             return {
@@ -12,6 +11,11 @@ export default function questions (state = {}, action) {
             return {
                 ...state,
                 [action.question.id]: action.question,
+            }
+        case SAVE_QUESTION_ANSWER:
+            return {
+                ...state,
+                //ADD SAVE ANSWER
             }
         default:
             return state

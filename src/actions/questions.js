@@ -1,24 +1,24 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
-export const SAVE_QUESTION = 'SAVE_QUESTION'
+export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
 
-export function receiveQuestions (questions) {
+export function receiveQuestions(questions) {
     return {
         type: RECEIVE_QUESTIONS,
         questions,
     }
 }
 
-export function addQuestion (question) {
+export function addQuestion(question) {
     return {
         type: ADD_QUESTION,
-        question
+        question,
     }
 }
 
-export function saveQuestion(question) {
+export function saveQuestionAnswer(question) {
     return {
-        type: SAVE_QUESTION,
-        question
+        type: SAVE_QUESTION_ANSWER,
+        question,
     }
 }
