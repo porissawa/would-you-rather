@@ -8,10 +8,11 @@ class App extends Component {
   }
 
   render() {
+    const {user} = this.props
+
     return (
       <div className="App">
         <div>User list:</div>
-        {console.log(this.props.users)}
       </div>
     );
   }

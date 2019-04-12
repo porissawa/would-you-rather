@@ -1,7 +1,6 @@
-import users from '../utils/_DATA'
 import {RECEIVE_USERS} from '../actions/users'
 
-let initialState = users
+let initialState = {}
 
 export default function getUsers (state = initialState, action) {
     switch(action.type) {
