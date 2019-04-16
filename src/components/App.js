@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
+import Login from './Login'
 
 class App extends Component {
   componentDidMount() {
@@ -8,13 +9,9 @@ class App extends Component {
   }
 
   render() {
-    const {user} = this.props
-
-    return (
-      <div className="App">
-        <div>User list:</div>
-      </div>
-    );
+    return(
+      <Login />
+    )
   }
 }
 
