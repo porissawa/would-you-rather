@@ -13,9 +13,16 @@ export function questions (state = {}, action) {
                 [action.question.id]: action.question,
             }
         case SAVE_QUESTION_ANSWER:
+            const {id, authedUser, answer} = action.vote
             return {
                 ...state,
-                //ADD SAVE ANSWER
+                [id]: {
+                    ...state[id],
+                    [answer]: {
+                        ...state[id][answer],
+                        votes: [...state[id][answer].votes, authedUser]
+                    }
+                }
             }
         default:
             return state
