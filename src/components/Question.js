@@ -1,26 +1,51 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import formatQuestion from '../utils/_DATA'
 
 class Question extends Component {
-    render() {
-        const {question, author} = this.props
+  render() {
+    const { question } = this.props
 
-        return(
-            <div className='question' key={question.id}>
-                <div className='question-author'>{author.name} asks:</div>
-                <div className='question-body'>
-                    <div className='question-author-avatar'>
-                        <img src={author.avatarURL} alt={`${author.name}'s avatar`} />
-                    </div>
-                    <p className='WYR'>Would You Rather:</p>
-                    <p>{question.optionOne.text}</p>
-                    <p className='WYR-or'>OR</p>
-                    <p>{question.optionTwo.text}</p>
-                </div>
-            </div>
-        )
+    if (question === null) {
+      return <p> This question does not exist </p>
     }
+
+    const { name, id, timestamp, avatar, optionOne, optionTwo } = question 
+
+    return (
+      <div className="question" id={id}>
+        <div className="question-header">   
+          <img 
+            src={avatar}
+            alt={`Avatar of ${name}`}
+            className='avatar'
+          />
+          <div className="header-info">
+            <span>{name} ask:</span>
+            <div>{timestamp}</div> 
+          </div>
+        </div>
+        <div className='question-body'>
+          <h3>Would You Rather ..</h3>
+          <form>
+            <input type="radio" name="answer" value="o1" />{optionOne.text} <br />
+            <input type="radio" name="answer" value="o2" />{optionTwo.text} <br />
+            <button type="submit" name="submit">Submit</button> 
+          </form>
+        </div>
+      </div>
+    )
+  }
 }
 
-export default withRouter(connect()(Question))
+function mapStateToProps({authedUser, users, questions}, { id }) {
+  const question = questions[id]
+  return {
+    authedUser,
+    question: question
+      ? formatQuestion(question, users[question.author], authedUser)
+      : null
+  }
+}
+
+export default connect(mapStateToProps)(Question)

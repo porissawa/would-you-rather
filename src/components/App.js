@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {handleInitialData} from '../actions/shared'
 import Login from './Login'
 import Question from './Question'
+import NewQuestion from './NewQuestion'
 
 class App extends Component {
   componentDidMount() {
